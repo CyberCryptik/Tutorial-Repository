@@ -1,6 +1,5 @@
 # Problem 4: Dealing with missing values
 from pathlib import Path
-
 import pandas as pd
 
 
@@ -28,12 +27,16 @@ def print_df_information(df):
         df: A pandas dataframe containing the data
     """
     print("\nNumber of rows and columns:\n")
+    # Prints number of rows and columns
     print(df.shape)
     print("\nFirst 7 rows:\n")
+    #.head() prints first number of specified rows
     print(df.head(7))
     print("\nLast 6 rows:\n")
+    #.tail prints last number of specified rows
     print(df.tail(6))
     print("\nColumn labels:\n")
+    # prints column labels
     print(df.columns)
     print("\nColumn labels, datatypes and value counts:\n")
     print(df.info())
@@ -58,13 +61,22 @@ def prepare_data(df):
 
     # 3.1 Drop rows where there is NaN in the 'Participants M' or 'Participants F' columns
     # Use `dropna` and specify to only remove  with null/Nan in the Participants (M) and Participants (F) columns
+    df_missing_values = df.isna()
+    print(df_missing_values)
+    missing_rows = df[df_missing_values.any(axis=1)]
+    print(missing_rows)
+    
+    # Use `dropna` and specify to only remove  with null/Nan in the Participants (M) and Participants (F) columns
     # The general syntax is: df.dropna(subset=['AColName', 'AnotherColName'])
     # Remember: assign the result to a new DataFrame, or use the `inplace=True` attribute
 
-    # 3.2 Replace the NaN in Type column with 'Winter'
+    df_prepared.dropna(subset=['Participants (M)', 'Participants (F)'], inplace=True)
+    # Replace the NaN in Type column with 'Winter'
     # The general syntax is: df.fillna({'ColName': 'ValueToReplaceNull'})
     # Remember: assign the result to a new DataFrame, or use the `inplace=True` attribute
 
+    df_prepared.fillna({'Type': 'Winter'}, inplace=True)
+    
     return df_prepared
 
 

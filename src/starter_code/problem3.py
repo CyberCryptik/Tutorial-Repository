@@ -1,6 +1,5 @@
 # Problem 3: Delete unnecessary columns
 from pathlib import Path
-
 import pandas as pd
 
 
@@ -55,16 +54,17 @@ def print_df_information(df):
 def prepare_data(df):
     """ Takes the raw data and prepares it for later use in the paralympics dashboard
 
-       Args:
-           df: The raw data in a pandas DataFrame
+        Args:
+        df: The raw data in a pandas DataFrame
 
-       Returns:
+        Returns:
         df_prepared: A pandas DataFrame with the prepared data
 
-       """
+        """
+    
     # 1. Drop the list of named columns `['Events', 'Sports', 'Countries'] and
     # assign the result to a new variable named df_prepared
-    df_prepared = ''  # Add code and delete the ''
+    df_prepared = df.drop(['Events', 'Sports', 'Countries'], axis=1) # Add code and delete the ''
     return df_prepared
 
 

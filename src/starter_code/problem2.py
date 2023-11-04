@@ -1,6 +1,5 @@
 # Problem 2: Print information about the data frame contents
 from pathlib import Path
-
 import pandas as pd
 
 
@@ -37,27 +36,32 @@ def print_df_information(df):
     """
     # Print the number of rows and columns in the DataFrame using `.shape()`
     print("\nNumber of rows and columns:\n")
-    print()  # Add your code inside the brackets
+    df_dimensions = df.shape
+    print(df_dimensions)  # Add your code inside the brackets
 
     # Print the first 7 rows of data using `.head()` and the last 6 rows using `.tail()`
     print("\nFirst 7 rows:\n")
-    print()  # Add your code inside the brackets
+    df_head = df.head(7)
+    print(df_head)  # Add your code inside the brackets
     print("\nLast 6 rows:\n")
-    print()  # Add your code inside the brackets
-
+    df_tail = df.tail(6)
+    print(df_tail)
     #  Print the column labels using `.info()` or `.columns`.
     #  Are there any columns that you don't think will be needed to answer the questions?
     print("\nColumn labels:\n")
-    print()  # Add your code inside the brackets
+    column_labels = df.columns
+    print(column_labels)  # Add your code inside the brackets
 
     # Print the column data types using `.info()` or `.dtypes`
     print("\nColumn data types:\n")
-    print()  # Add your code inside the brackets
+    column_data_types = df.dtypes
+    print(column_data_types)  # Add your code inside the brackets
 
     # Print general statistics using `.describe()`
     # Why are some columns not shown in the output?
     print("\nStatistics:\n")
-    print()  # Add your code inside the brackets
+    df_statistics = df.describe()
+    print(df_statistics)  # Add your code inside the brackets
 
 
 if __name__ == '__main__':
